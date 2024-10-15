@@ -1,0 +1,388 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #f0f0f0, #a08ad7, #2196f3, #FAFAD2);
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative; /* Đặt vị trí tương đối để xử lý phần tử con */
+}
+
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.app-header p {
+  margin: 10px 0 0;
+  font-size: 1.2em;
+  color: #f0f0f0;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.led-container {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  opacity: 0;
+  max-height: 0;
+  font-weight: bold;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: opacity 0.5s ease, max-height 0.5s ease, transform 1s ease;
+}
+
+.led-container.active {
+  opacity: 1;
+  max-height: 1000px; /* Điều chỉnh chiều cao tối đa của led-container */
+  transform: translateX(0);
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+select,
+button {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Box shadow */
+}
+.button1 {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Box shadow */
+}
+.button1:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 3px solid #4CAF50;
+  
+  
+}
+button:hover {
+  background-color: #0056b3;
+}
+button.disable {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.disable:hover {
+  background-color: white;
+  color: #dc3545;
+  border: 3px solid #dc3545;
+}
+
+/* Kiểu cho nút bật/tắt LED khi đang ở trạng thái Custom (Control = false) */
+button.enable {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.enable:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 3px solid #4CAF50;
+}
+
+button.clicked .effect {
+  animation: fill-effect 0.3s forwards;
+}
+
+@keyframes fill-effect {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.add-led {
+  text-align: center;
+  padding: 20px;
+}
+
+.add-led button {
+  background-color: #28a745;
+}
+
+.add-led button:hover {
+  background-color: #218838;
+}
+
+.red {
+  font-weight: bold;
+  background-color: rgb(233, 156, 69);
+}
+.address-list {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.address-item {
+  background-color: rgb(233, 156, 69);
+  padding: 10px;
+  font-weight: bold;
+  color: #000000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm box-shadow để đổ bóng */
+  position: relative;
+  padding-left: 37px;
+}
+
+.address-item:hover {
+  background-color: white;
+  color: rgb(233, 141, 36);
+  border: 3px solid rgb(233, 141, 36);
+}
+
+.address-item .dropdown-arrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-left: 4px solid #333;
+  border-bottom: 4px solid #333;
+  transition: transform 0.3s;
+  margin-left: 20px;
+  
+}
+
+.address-item.active .dropdown-arrow {
+  transform: translateY(-50%) rotate(-135deg); /* Xoay -135 độ khi đang mở */
+}
+.address-item .dropdown-arrow.closed {
+  transform: rotate(0deg); /* Xoay ngang khi đóng */
+}
+
+
+
+.add-address {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  
+}
+
+.add-address input[type="text"] {
+  padding: 10px 80px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+  margin-right: 10px;
+  border: 2px solid #000000;
+}
+
+.add-address button {
+  padding: 10px 50px;
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-address button:hover {
+  background-color: white;
+  color: #2196f3;
+  border: 3px solid #2196f3;
+
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Độ mờ của nền */
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.modal-content button {
+  background-color: #119416; /* Màu nền mặc định */
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: white;
+  color: #119416;
+  border: 3px solid #119416;;
+}
+
+.auth-section {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px; /* Đặt nút vào góc phải và cách lề phải 20px */
+}
+
+.auth-section button {
+  padding: 10px 50px;
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.auth-section button:hover {
+  background-color: white;
+  color: #2196f3;
+  border: 3px solid #2196f3;
+}
+.option-button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.option-button:hover {
+  background-color: #0056b3;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+button.locked {
+  background-color: #ccc; /* Màu nền của nút khi bị khóa */
+  cursor: not-allowed;    /* Con trỏ hiển thị khi nút bị khóa */
+}
+button:not(.locked):hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 3px solid #4CAF50;
+}
+.light-blue {
+  background-color: lightblue;
+}
